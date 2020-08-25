@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: SAM Template for Serverless App
+
+Globals:
+  Function:
+    Runtime: python3.7
+    MemorySize: 512
+    Timeout: 180
+    Handler: __init__.handle
+Resources:
+  SampleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      FunctionName: d-sample-function
+      CodeUri: ./lambdas/sample
+      Events:
+        ApiEvent:
+          Type: HttpApi
+          Properties:
+            Method: GET
+            Path: /sample
