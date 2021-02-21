@@ -1,0 +1,24 @@
+{
+  "name": "delete",
+  "version": "1.0.0",
+  "description": "`sam deploy`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-api": "sam local start-api --host localhost --port 8081 --template template-d.yml",
+    "local": "sam build $npm_config_func --use-container && sam local invoke $npm_config_func",
+    "build": "sam build --use-container",
+    "deploy": "sam build --use-container && sam package --template-file .aws-sam/build/template.yaml --s3-bucket deploy-tmp && sam deploy --stack-name [STACK_NAME] --s3-bucket deploy-tmp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parkeragee/sam-starter.git"
+  },
+  "keywords": [],
+  "author": "Parker Agee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/parkeragee/sam-starter/issues"
+  },
+  "homepage": "https://github.com/parkeragee/sam-starter#readme"
+}
